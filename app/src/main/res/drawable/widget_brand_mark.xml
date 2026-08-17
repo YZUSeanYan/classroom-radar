@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 小组件品牌标：官网 LogoMark 橙色雷达 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+    <path
+        android:fillColor="#FF670D"
+        android:pathData="M14,1.5a12.5,12.5 0,1 0,0 25a12.5,12.5 0,1 0,0 -25" />
+    <group
+        android:scaleX="0.5833"
+        android:scaleY="0.5833">
+        <path
+            android:pathData="M24,34.5c5.8,0 10.5,-4.7 10.5,-10.5"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="3.2"
+            android:strokeLineCap="round" />
+        <path
+            android:pathData="M24,41c9.4,0 17,-7.6 17,-17"
+            android:strokeColor="#FFFFFF"
+            android:strokeAlpha="0.65"
+            android:strokeWidth="3.2"
+            android:strokeLineCap="round" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M18.8,24a5.2,5.2 0 1,0 10.4,0a5.2,5.2 0 1,0 -10.4,0" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M28.1,16.5a3.4,3.4 0 1,0 6.8,0a3.4,3.4 0 1,0 -6.8,0" />
+    </group>
+</vector>

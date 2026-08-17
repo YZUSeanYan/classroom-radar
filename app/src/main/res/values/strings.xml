@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">水课雷达</string>
+    <string name="start">开始聆听</string>
+    <string name="open">打开</string>
+    <string name="stop">停止</string>
+    <string name="notification_recording_title">水课雷达 · 实时课堂记录</string>
+    <string name="notification_question_title">水课雷达 · 课堂有提问</string>
+    <string name="channel_recording">课堂录音状态</string>
+    <string name="channel_alert">课堂提问提醒</string>
+    <string name="widget_subtitle">离线课堂雷达</string>
+</resources>

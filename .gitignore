@@ -1,0 +1,24 @@
+.gradle/
+.codex-gradle-home/
+.codex-gradle-tmp/
+build/
+app/build/
+/.vendor/
+local.properties
+*.iml
+
+# 安装包与密钥（正式 keystore 不入库）
+*.apk
+*.aab
+*.jks
+*.keystore
+
+# IDE
+.idea/
+.cxx/
+.externalNativeBuild/
+.codex-tmp/
+.kotlin/
+
+# 内部文档（含个人信息，不入库）
+项目交接说明.md

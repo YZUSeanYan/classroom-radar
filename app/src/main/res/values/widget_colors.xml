@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 桌面小组件：与官网一致的浅色橙风 -->
+    <color name="widget_glass_start">#FFFFFF</color>
+    <color name="widget_glass_end">#FCFCFC</color>
+    <color name="widget_glass_stroke">#E6E5E3</color>
+    <color name="widget_text_primary">#171717</color>
+    <color name="widget_text_muted">#6F6F6F</color>
+    <color name="widget_accent_text">#E04E00</color>
+    <color name="widget_primary_text">#FFFFFF</color>
+    <color name="widget_chip_fill">#FFF1E8</color>
+    <color name="widget_chip_stroke">#FFD9C2</color>
+    <color name="widget_primary_start">#FF670D</color>
+    <color name="widget_primary_end">#E04E00</color>
+    <color name="widget_secondary_fill">#FFFFFF</color>
+    <color name="widget_secondary_stroke">#E6E5E3</color>
+</resources>
