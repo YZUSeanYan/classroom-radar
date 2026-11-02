@@ -322,7 +322,7 @@ class RecordingService : Service() {
             .setContentIntent(openApp)
             .setOngoing(true)
             .setOnlyAlertOnce(true)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
             .setWhen(startedAt)
             .setShowWhen(true)
             .setUsesChronometer(true)
@@ -346,7 +346,7 @@ class RecordingService : Service() {
             .setContentTitle(getString(R.string.notification_question_title))
             .setContentText(question)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
             .setCategory(NotificationCompat.CATEGORY_REMINDER)
             .setStyle(
                 NotificationCompat.BigTextStyle().bigText(
@@ -376,7 +376,10 @@ class RecordingService : Service() {
     private fun createNotificationChannel() {
         val manager = getSystemService(NotificationManager::class.java)
         manager.createNotificationChannel(
-            NotificationChannel(CHANNEL_RECORDING, getString(R.string.channel_recording), NotificationManager.IMPORTANCE_LOW),
+            NotificationChannel(CHANNEL_RECORDING, getString(R.string.channel_recording), NotificationManager.IMPORTANCE_LOW).apply {
+                // Do not expose transcription text or classroom questions on a locked screen.
+                lockscreenVisibility = Notification.VISIBILITY_PRIVATE
+            },
         )
         // The legacy alert channel was created with the system default notification sound,
         // and channel audio settings are frozen after creation — so existing installs keep
@@ -388,7 +391,7 @@ class RecordingService : Service() {
                 // the user's settings; the notification itself must always stay silent.
                 setSound(null, null)
                 enableVibration(false)
-                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+                lockscreenVisibility = Notification.VISIBILITY_PRIVATE
             },
         )
     }
