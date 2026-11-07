@@ -1,24 +1,67 @@
+# IDE and local machine state
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+local.properties
 .gradle/
 .codex-gradle-home/
 .codex-gradle-tmp/
-build/
-app/build/
-/.vendor/
-local.properties
-*.iml
-
-# 安装包与密钥（正式 keystore 不入库）
-*.apk
-*.aab
-*.jks
-*.keystore
-
-# IDE
-.idea/
-.cxx/
-.externalNativeBuild/
 .codex-tmp/
 .kotlin/
+.cxx/
+.externalNativeBuild/
+.vendor/
 
-# 内部文档（含个人信息，不入库）
-项目交接说明.md
+# Environment files and signing material
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.p8
+*.key
+*.pem
+*.mobileprovision
+*.provisionprofile
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# Build outputs and packages
+build/
+dist/
+out/
+*.apk
+*.aab
+*.apks
+*.idsig
+*.class
+*.dex
+*.hprof
+
+# Runtime data, databases, logs and cookies
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.realm
+*.log
+logs/
+Cookies
+Cookies-*
+cookies.txt
+*.cookie
+*.cookies
+*.cookiejar
+
+# Test caches
+.pytest_cache/
+__pycache__/
+*.py[cod]
+.coverage
+htmlcov/
