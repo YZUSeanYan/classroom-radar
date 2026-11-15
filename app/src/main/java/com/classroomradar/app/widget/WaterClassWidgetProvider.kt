@@ -12,18 +12,25 @@ import androidx.core.content.ContextCompat
 import com.classroomradar.app.MainActivity
 import com.classroomradar.app.R
 import com.classroomradar.app.audio.RecordingService
+import com.classroomradar.app.data.AppPreferences
 
 /** A local widget: one tap starts listening after microphone permission is granted. */
 class WaterClassWidgetProvider : AppWidgetProvider() {
     override fun onUpdate(context: Context, manager: AppWidgetManager, appWidgetIds: IntArray) {
-        updateAll(context, manager, appWidgetIds, isRecording = false)
+        updateAll(
+            context,
+            manager,
+            appWidgetIds,
+            isRecording = RecordingService.currentRecordingSnapshot() != null,
+        )
     }
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == ACTION_START_LISTENING) {
             if (
                 ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED &&
-                RecordingService.isRealtimeNotificationEnabled(context)
+                RecordingService.isRealtimeNotificationEnabled(context) &&
+                AppPreferences.get(context).usageNoticeAccepted
             ) {
                 ContextCompat.startForegroundService(
                     context,

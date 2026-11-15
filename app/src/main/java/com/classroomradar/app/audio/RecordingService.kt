@@ -73,7 +73,9 @@ class RecordingService : Service() {
         // Multiple UI/widget start intents are harmless. In particular, never turn an active
         // recording into a service stop just because a stale start PendingIntent was tapped.
         if (recording || finishingRecording) return
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED ||
+            !preferences.usageNoticeAccepted
+        ) {
             stopSelf()
             return
         }
@@ -536,7 +538,7 @@ class RecordingService : Service() {
                 append(compactNotificationText(line, 96))
             }
             if (latestPartialText.isNotBlank()) {
-                if (isNotEmpty()) append("\\n\\n")
+                if (isNotEmpty()) append("\n\n")
                 append("正在识别：")
                 append(compactNotificationText(latestPartialText, 120))
             }
