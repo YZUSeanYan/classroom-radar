@@ -143,6 +143,23 @@ class QuestionDetectorTest {
         assertTrue(QuestionDetector.DEFAULT_TRIGGER_WORDS.size >= 20)
     }
 
+    @Test
+    fun `extracts question regardless of English trigger casing`() {
+        val afterResult = QuestionDetector().extractQuestion(
+            "TELL ME, why do we use binary search?",
+            1_000L,
+        )
+        assertNotNull(afterResult)
+        assertEquals("why do we use binary search?", afterResult?.question)
+
+        val beforeResult = QuestionDetector().extractQuestion(
+            "What is dynamic programming? ANY VOLUNTEERS?",
+            20_000L,
+        )
+        assertNotNull(beforeResult)
+        assertEquals("What is dynamic programming?", beforeResult?.question)
+    }
+
     private fun QuestionDetector.promptWarningCount(
         events: List<QuestionDetector.DetectionEvent>,
     ): Int = events.filterIsInstance<QuestionDetector.DetectionEvent.PromptMatched>().size

@@ -123,15 +123,19 @@ class QuestionDetector(
     }
 
     private fun extractQuestionAfterTrigger(text: String, trigger: String): String? {
-        val remainder = text.substringAfter(trigger, missingDelimiterValue = "")
+        val triggerIndex = text.indexOf(trigger, ignoreCase = true)
+        if (triggerIndex < 0) return null
+        val remainder = text.substring(triggerIndex + trigger.length)
         return extractQuestionSpan(trimInstructionPrefix(remainder))
     }
 
     private fun extractQuestionBeforeTrigger(text: String, trigger: String): String? {
-        var prefix = text.substringBeforeLast(trigger, missingDelimiterValue = "").trim()
+        val triggerIndex = text.lastIndexOf(trigger, ignoreCase = true)
+        if (triggerIndex < 0) return null
+        var prefix = text.substring(0, triggerIndex).trim()
         while (true) {
-            val residue = TRIGGER_PREFIX_RESIDUES.firstOrNull { prefix.endsWith(it) } ?: break
-            prefix = prefix.removeSuffix(residue).trim()
+            val residue = TRIGGER_PREFIX_RESIDUES.firstOrNull { prefix.endsWith(it, ignoreCase = true) } ?: break
+            prefix = prefix.dropLast(residue.length).trim()
         }
         return extractQuestionSpan(prefix)
     }
